@@ -11,7 +11,7 @@ module.exports = function Dictaphone(opts, baseUrl) {
 
   var cache = new Cache({
     base: baseUrl,
-    store: opts.cacheFile ? new storage.FileStore(opts.cacheFile) : new storage.MemoryStore(),
+    store: opts.cacheFile ? new storage.FileStore(opts.cacheFile, opts.hashUrls) : new storage.MemoryStore(),
     ignore: opts.ignoreParams
   });
 

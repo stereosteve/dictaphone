@@ -10,6 +10,7 @@ opts
   .usage('[options] [host]')
   .description('single-host caching proxy')
   .option('-c, --cache-file <file>', 'use filesystem cache')
+  .option('-h, --hash-urls', 'hash URLs when using filesystem to avoid ENAMETOOLONG for long URLs')
   .option('-p, --port <port>', 'run proxy on specified port')
   .option('-i, --ignore-values <params>', 'comma-separated list of query parameters to ignore for caching')
   .option('-x, --no-proxy', 'return a canned 404 for uncached request responses (implied by omitting host argument)');
@@ -37,6 +38,7 @@ if (opts.ignoreValues)
 
 var d = new Dictaphone({
   cacheFile: opts.cacheFile,
+  hashUrls: opts.hashUrls,
   port: opts.port,
   ignoreParams: ignore
 }, baseUrl);
